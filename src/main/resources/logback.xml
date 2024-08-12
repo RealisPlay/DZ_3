@@ -1,0 +1,36 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <property name="LOG_DIR" value="C:\Users\gepat\Documents\training at GeekBrains\Introduction to Test Automation\Introduction_to_Test_Automation\src\main\resources"/>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+<!--        для лекции 05-->
+<!--        <file>${LOG_DIR}/lesson_05.log</file>-->
+<!--        для семинара 05-->
+<!--        <file>${LOG_DIR}/seminar_05.log</file>-->
+<!--        для домашней работы 05-->
+<!--        <file>${LOG_DIR}/homework_05.log</file>-->
+<!--        для лекции 06-->
+        <file>${LOG_DIR}/lesson_06.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.gz</fileNamePattern>
+
+            <!-- keep 30 days' worth of history capped at 3GB total size -->
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>3GB</totalSizeCap>
+        </rollingPolicy>
+        <append>true</append>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>
